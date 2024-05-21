@@ -2,16 +2,15 @@ import { Container, Brand, Menu, Search, Content, NewNote } from "./styles";
 import { Header } from "../../components/Header";
 import { ButtonText } from "../../components/ButtonText";
 import { Section } from "../../components/Section";
-import { Tags } from "../../components/Tags";
 import { Input } from "../../components/Input";
-import { FiSearch } from "react-icons/fi";
+import { FiPlus, FiSearch } from "react-icons/fi";
 import { Note } from "../../components/Note";
 
 export function Home() {
   return (
     <Container>
       <Brand>
-        <h1>vncNotes</h1>
+        <h1>vnc notes</h1>
       </Brand>
 
       <Header/>
@@ -40,8 +39,9 @@ export function Home() {
 
       </Content>
 
-      <NewNote>
-        <ButtonText title="+ Criar Nota" />
+      <NewNote to="new">
+          <FiPlus />
+          Criar Nota
       </NewNote>
 
     </Container>

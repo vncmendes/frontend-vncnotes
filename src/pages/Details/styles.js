@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MainContainer = styled.div`
+export const Container = styled.div`
   width: 100%;
   height: 100vh;
 
@@ -45,7 +45,6 @@ export const Content = styled.div`
     font-weight: 500;
     padding-top: 64px;
   }
-
 
   p {
     font-size: 16px;

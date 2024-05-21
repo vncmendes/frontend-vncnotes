@@ -1,4 +1,4 @@
-import { Links, MainContainer, Content } from "./styles";
+import { Links, Container, Content } from "./styles";
 import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
 import { Section } from "../../components/Section";
@@ -6,9 +6,9 @@ import { Tags } from "../../components/Tags";
 import { ButtonText } from "../../components/ButtonText";
 
 
-export function Main() {
+export function Details() {
   return (
-    <MainContainer>
+    <Container>
       <Header/>
 
       <main>
@@ -36,6 +36,6 @@ export function Main() {
         </Content>
       </main>
 
-    </MainContainer>
+    </Container>
   )
 }
