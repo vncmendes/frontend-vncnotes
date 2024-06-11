@@ -36,6 +36,7 @@ export const Brand = styled.div`
 export const Menu = styled.ul`
   grid-area: menu;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+  overflow-y: auto;
 
   > li {
     padding-top: 44px;

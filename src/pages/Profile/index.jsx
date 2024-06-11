@@ -1,22 +1,25 @@
-import { Container, Form, Avatar } from "./styles";
-import { FiArrowLeft, FiLock, FiUser, FiMail, FiCamera } from "react-icons/fi";
-import { Input } from "../../components/Input";
-import { Link } from "react-router-dom";
-import { useAuthContext } from "../../hooks/auth";
 import { useState } from "react";
-import { Button } from "../../components/Button";
+import { Link } from "react-router-dom";
 import { api } from "../../services/api";
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
+import { useAuthContext } from "../../hooks/auth";
+import { Container, Form, Avatar } from "./styles";
+import defaultImg from "../../assets/34182763n901748-hb-0007.jpg";
+import { FiArrowLeft, FiLock, FiUser, FiMail, FiCamera } from "react-icons/fi";
 
 export function Profile() {
   const { user, updateProfile } = useAuthContext();
-  console.log(user);
+
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
 
   const [passwordNew, setPasswordNew] = useState("");
   const [passwordOld, setPasswordOld] = useState("");
 
-  const [avatar, setAvatar] = useState(user.avatar);
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : defaultImg;
+
+  const [avatar, setAvatar] = useState(avatarUrl);
   const [avatarFile, setAvatarFile] = useState(null);
 
   async function handleUpdateProfile() {
@@ -34,7 +37,7 @@ export function Profile() {
     const file = event.target.files[0];
     setAvatarFile(file);
 
-    const imagePreview =  URL.createObjectURL(file);
+    const imagePreview = URL.createObjectURL(file);
     setAvatar(imagePreview);
   }
 
@@ -61,9 +64,10 @@ export function Profile() {
               type="file"
               onChange={handleChangeAvatar}
             />
-            
+
           </label>
         </Avatar>
+
         <Input 
           type="text" 
           icon={FiUser} 
