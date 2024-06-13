@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
@@ -23,14 +23,22 @@ export function Profile() {
   const [avatarFile, setAvatarFile] = useState(null);
 
   async function handleUpdateProfile() {
-    const user = {
+    const updated = {
       name,
       email,
       password: passwordNew,
       old_password: passwordOld,
     }
 
-    await updateProfile({ user, avatarFile });
+    const userUpdated = Object.assign(user, updated);
+
+    await updateProfile({ user: userUpdated, avatarFile });
+  }
+
+  const navigate = useNavigate();
+
+  function handleBack() {
+    navigate(-1);
   }
 
   function handleChangeAvatar(event) {
@@ -44,9 +52,9 @@ export function Profile() {
   return (
     <Container>
       <header>
-        <Link to="/">
+        <button type="button" onClick={handleBack}>
           <FiArrowLeft />
-        </Link>
+        </button>
       </header>
 
       <Form>

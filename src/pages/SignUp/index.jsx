@@ -56,7 +56,7 @@ export function SignUp() {
 
         <Input
           placeholder="Password"
-          type="text"
+          type="password"
           icon={FiLock}
           onChange={event => setPassword(event.target.value)}/>
 
